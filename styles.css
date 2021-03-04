@@ -1,0 +1,282 @@
+:root {
+
+	/*box-sizing: border-box;*/
+	/*colors*/
+	--page-background: #141B41; 
+	--projects-page-background:#6b4b3e;
+	--text: #F4F482;
+	--hover: #306BAC;
+	--header-footer-background: #C32F27;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* box-sizing setting */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	scroll-behavior:smooth;
+	/* reason to do it - easy rem values. 1rem now equals 10px ( 100% : 16px = 62.5% : 10px) */
+	/* goal is to make site accessible, so ill use rem units for all padding, margins, font sizes*/
+	font-size: 62.5%; 
+}
+body {
+	font-family: Roboto, monospace;
+	background: var(--page-background);
+	color: var(--text);
+}
+/*
+	Several font size (which will also affect paddings everywhere) for different screen sizes
+*/
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+h1,h2 {
+	font-weight: 800;
+	text-align: center;
+	text-shadow: 1px 1px 2px black;
+}
+h1 {
+	font-size: 6rem;
+	padding-bottom:1rem;
+}
+
+h2 {
+	font-size: 4rem;
+	padding-bottom:1rem;
+}
+
+.btn {
+	display:block;
+	text-decoration: none;
+	color: var(--text);
+	padding : 2rem 3rem;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px black;
+}
+
+section {
+	width: 100%;
+}
+
+/*      navbar      */
+/* ---------------- */
+#navbar {
+	position: fixed;
+	display:flex;
+	justify-content: flex-end;
+	border-top : 3px solid var(--projects-page-background);
+	border-bottom : 3px solid var(--projects-page-background);
+	background: var(--header-footer-background);
+	width :100%;
+}
+
+#navbar a {
+	font-size: 2.5rem;
+	transition: background 0.2s ease-out;
+}
+#navbar a:hover {
+	background: var(--hover);
+	
+}
+
+@media (max-width: 61.25em) {
+	#navbar {
+		position: static;
+		justify-content:center;
+	}
+}
+@media (max-width: 28.75em) {
+	#navbar {
+		position: static;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+
+/* welcome section*/
+/* ---------------- */
+
+#welcome-section{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#welcome-section > p {
+	font-size: 2rem;
+	font-style: italic;
+}
+
+/* projects section */
+/* ---------------- */
+#projects {
+	display:flex;
+	flex-direction:column;
+	justify-content: space-evenly;
+	align-items: center;
+	background: var(--projects-page-background);
+}
+
+#projects > h2 {
+	padding: 3rem 0;
+}
+
+div.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	width:100%;
+	max-width: 1280px;
+	padding: 0 2rem;
+	margin-bottom: 3rem;
+	grid-gap: 3rem;
+}
+
+@media (max-width: 61.25em) {
+	div.projects-grid {
+		grid-gap: 2rem;
+		margin-bottom: 1rem;
+	}
+}
+
+.projects-grid img {
+	width: 100%;
+}
+
+.projects-grid a {
+	display:block;
+	text-decoration: none;
+	color: var(--text);
+	cursor: pointer;
+	
+}
+
+.projects-grid p {
+	padding : 2rem 5rem;
+	text-align: center;
+	text-shadow: 1px 1px 2px black;
+	font-size: 2rem;
+}
+
+.project-tile {
+	background: var(--header-footer-background);
+	border-radius: 2px;
+}
+
+/* contact links */
+/* ---------------- */
+#contact {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 50rem;
+}
+
+#contact > p {
+	font-size: 2rem;
+	font-style: italic;
+	padding-bottom: 1rem;
+	text-shadow: 1px 1px 2px black;
+}
+
+.contact-links {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+i {
+	padding: 0.5rem;
+}
+
+.profile-link {
+	font-size: 2rem;
+	transition: transform 0.2s ease-out;
+}
+
+.profile-link:hover {
+	transform: translateY(8px) scale(1.1); 
+}
+
+@media (max-width: 61.25em) {
+	#contact {
+		height: 35rem;
+	}
+
+	.profile-link {
+		padding: 1rem 1rem;
+	}
+	#contact > p {
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 28.75em) {
+	#contact {
+		height: 30rem;
+	}
+	.contact-links {
+		flex-direction: column;
+		align-items: center;
+	}
+	.profile-link:hover {
+		transform:  scale(1.2); 
+	}
+}
+
+/*footer*/
+/* ---------------- */
+footer {
+	background: var(--header-footer-background);
+	display: flex;
+	align-items: center;
+	height: 10rem;
+	border-top: 4px solid var(--projects-page-background);
+}
+
+footer p {
+	font-size: 2rem;
+	padding: 3rem 5rem;
+}
+
+@media (max-width: 28.75em) {
+	footer {	
+		height: 8rem;
+		justify-content: center;
+	}
+
+	footer p {
+		padding: 1rem 1rem;
+	}
+
+}
